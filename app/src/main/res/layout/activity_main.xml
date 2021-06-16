@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <com.orzechowski.lab4.DrawingSurface
+        android:id="@+id/drawing_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kolor_czerwony"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/kolor_czarny"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kolor_czarny"
+        android:background="@android:color/black"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/kolor_czerwony"
+        app:layout_constraintEnd_toStartOf="@id/kolor_niebieski"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kolor_niebieski"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/kolor_czarny"
+        app:layout_constraintEnd_toStartOf="@id/kolor_zielony"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kolor_zielony"
+        android:background="@android:color/holo_green_dark"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/kolor_niebieski"
+        app:layout_constraintEnd_toStartOf="@id/czysc"/>
+
+    <ImageButton
+        android:id="@+id/czysc"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/darker_gray"
+        android:contentDescription="@string/delete_drawing"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/kolor_zielony" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

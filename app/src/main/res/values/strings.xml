@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">lab4</string>
+    <string name="delete_drawing">delete drawing</string>
 </resources>
