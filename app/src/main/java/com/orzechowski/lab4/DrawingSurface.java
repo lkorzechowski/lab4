@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -52,12 +53,14 @@ public class DrawingSurface extends SurfaceView implements SurfaceHolder.Callbac
                 canvas.drawColor(Color.WHITE);
                 canvas.drawBitmap(mBitmap, 0, 0, null);
                 int currentColor = mPaint.getColor();
-                for (PreviousPath p : previousPaths){
-                    mPaint.setColor(p.color);
-                    canvas.drawCircle(p.startX, p.startY, 10, mPaint);
-                    canvas.drawPath(p.path, mPaint);
-                    canvas.drawCircle(p.endX, p.endY, 10, mPaint);
-                }
+                try {
+                    for (PreviousPath p : previousPaths) {
+                        mPaint.setColor(p.color);
+                        canvas.drawCircle(p.startX, p.startY, 10, mPaint);
+                        canvas.drawPath(p.path, mPaint);
+                        canvas.drawCircle(p.endX, p.endY, 10, mPaint);
+                    }
+                } catch (ConcurrentModificationException ignore){}
                 mPaint.setColor(currentColor);
                 canvas.drawCircle(mStartX, mStartY, 10, mPaint);
                 canvas.drawCircle(mCurrentX, mCurrentY, 10, mPaint);
